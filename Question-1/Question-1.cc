@@ -37,13 +37,13 @@ int main() {
 
     int x = -10;
     int y = 15;
-    cout << " " << (x,y) << std::endl;
+    std::cout << " " << (x,y) << std::endl;
 
     // print integer ratios of y:x till x < y
     // invalid ratios should print 0
     while (x < y)
     {
-        cout << "ratio: " << (y/x) << endl;
+        std::cout << "ratio: " << (y/x) << std::endl;
         x++;
         y--;
     }
@@ -52,19 +52,19 @@ int main() {
     int i = 1, j = 1; // don't change values
     if ((i = !3) & (j = 1))
     {
-        cout << "j is 1 and i is not 3\n";
+        std::cout << "j is 1 and i is not 3\n";
     }
     else {
-        cout << "either j is NOT 1, or i is set to 3\n";
+        std::cout << "either j is NOT 1, or i is set to 3\n";
 
     }
 
 
-    typedef map<int, double> valmap;
+    typedef std::map<int, double> valmap;
     valmap m;
 
-    for (int i = 0; i < valSize; i++)
-        m.insert(make_pair(values[i], pow(values[i], .5)));
+    for (int i = 0; i < val_size; i++)
+        m.insert(std::make_pair(values[i], pow(values[i], .5)));
 
     m.insert(1, 2);
 
