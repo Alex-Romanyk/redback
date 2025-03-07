@@ -20,7 +20,7 @@ public:
     : mElements(list) {}
 };
 
-struct person{
+struct person {
     int age;
     float weight;
 };
@@ -50,13 +50,12 @@ int main() {
 
 
     int i = 1, j = 1; // don't change values
-    if ((i = !3) & (j = 1))
+    if ((i != 3) && (j == 1)) 
     {
         std::cout << "j is 1 and i is not 3\n";
     }
     else {
         std::cout << "either j is NOT 1, or i is set to 3\n";
-
     }
 
 
