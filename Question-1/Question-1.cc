@@ -20,10 +20,10 @@ public:
     : mElements(list) {}
 };
 
-struct {
+struct person{
     int age;
     float weight;
-} person;
+};
 
 
 void show_output(const int** pp)
