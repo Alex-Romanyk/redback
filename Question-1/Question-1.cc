@@ -80,7 +80,7 @@ int main() {
     ptr->weight = 55.5;
 
     // Initialise with 5 integers
-    Foo foo;
+    Foo foo = { 1, 2, 3, 4, 5};
 
     return 0;
 }
