@@ -7,6 +7,7 @@
 #include <map>
 #include <vector>
 #include <initializer_list>
+#include <cmath>
 
 const int values[] = { 1,2,3,4,5 };
 const int val_size = sizeof values / sizeof(int);
@@ -62,10 +63,10 @@ int main() {
     typedef std::map<int, double> valmap;
     valmap m;
 
-    for (int i = 0; i < val_size; i++)
+    for (int i = 0; i < val_size; i++) {
         m.insert(std::make_pair(values[i], pow(values[i], .5)));
-
-    m.insert(1, 2);
+    }
+    m.insert(std::pair<int,double>(1,2));
 
 
     int n = 1;
