@@ -8,6 +8,7 @@
 #include <vector>
 #include <initializer_list>
 #include <cmath>
+#include <memory>
 
 const int values[] = { 1,2,3,4,5 };
 const int val_size = sizeof values / sizeof(int);
@@ -74,8 +75,7 @@ int main() {
     show_output(p);
 
     // Initialise a person on the heap with the use of smart pointers (unique_ptr) instead.
-    struct person* ptr;
-    ptr = (struct person*)malloc(sizeof(struct person));
+    std::unique_ptr<person> ptr = std::make_unique<person>();
     ptr->age = 10;
     ptr->weight = 55.5;
 
