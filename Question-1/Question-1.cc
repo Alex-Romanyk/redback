@@ -43,7 +43,7 @@ int main() {
     // invalid ratios should print 0
     while (x < y)
     {
-        std::cout << "ratio: " << (y/x) << std::endl;
+        std::cout << "ratio: " << (x == 0 ? 0 : (y/x)) << std::endl;
         x++;
         y--;
     }
