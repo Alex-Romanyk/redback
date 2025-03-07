@@ -37,7 +37,7 @@ int main() {
 
     int x = -10;
     int y = 15;
-    std::cout << " " << (x,y) << std::endl;
+    std::cout << " " << y << ", " << x << std::endl;
 
     // print integer ratios of y:x till x < y
     // invalid ratios should print 0
