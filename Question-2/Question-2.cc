@@ -7,19 +7,30 @@
 #include <vector>
 #include <thread>
 #include <iostream>
+#include <mutex>
 
-int total = 0;
+int total = 0; // not sure why this is declared and initialized but not used...
 
 class Wallet
 {
     int mMoney;
+    std::mutex mtx;
 public:
     Wallet() :mMoney(0) {}
     int getMoney() { return mMoney; }
-    void addMoney(int money)
-    {
+    // the method addMoney() would cause the race conditions, as the 5 threads in main
+    // would be trying to access mMoney at the same time.
+    // "https://medium.com/@abhishekjainindore24/mutex-in-c-threads-part-1-45aeac3ab62d"
+    // used ^ to find out more about race conditions and mutex in C
+    // Learned about the different ways you could go about avoiding race conditions
+    // using mutex and deduced that lock_guard would be the best way as we only 
+    // need to lock a mutex in the scope of the for loop incrementing mMoney.
+    void addMoney(int money) 
+    {   
+
         for (int i = 0; i < money; ++i)
         {
+            std::lock_guard<std::mutex> lock(mtx);
             mMoney++;
         }
     }
