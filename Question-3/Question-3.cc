@@ -46,10 +46,35 @@
 // we can bit mask to isolate RR
 // perform bitwise AND with:
 // 00 00 00 00 FF FF 00 00
+// *** or just take a substring of data corresponding to the part we need
+// *** we can do this as the data for WheelSpeed is always 8 bytes
 // convert from hex to decimal 
 // multiply by scale 0.1
 
 // string handling functions:
 // sustr(pos, len)
+// find(substr) returns pos in str of first char in substr
 // 
 //##########################################################################
+using namespace std;
+
+int main(void) {
+    string data_line;
+    ofstream rr_wheel_speed("output.txt");
+    ifstream raw_data("../Question-3/candump.log");
+    if (raw_data.is_open()) {
+        while (getline(raw_data, data_line)) {
+            //checking if id of data_line matches that of WheelSpeed
+            if (data_line.substr(26,3) == "705") {
+                string timestamp = data_line.substr(0, 19); 
+                string rr_data = data_line.substr(38,4);
+                // converting hex into decimal and multiplying by the scale
+                float val = stoi(rr_data, nullptr, 16) * 0.1;
+                rr_wheel_speed << timestamp << ": " << val << endl;
+            }
+        }
+        raw_data.close();
+    }
+    rr_wheel_speed.close();
+    return 0;
+}
