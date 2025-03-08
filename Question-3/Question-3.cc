@@ -20,3 +20,36 @@
 // Resources:
 // https://www.csselectronics.com/pages/can-bus-simple-intro-tutorial
 // https://www.csselectronics.com/pages/can-dbc-file-database-intro
+
+//###### PLANNING AND RESEARCH #############################################
+// step 1 create txt file
+// step 2 iterate through candump.log
+// step 3 if ID matches (id = 705(hex), 1797(decimal))
+// step 4 decode value
+// step 5 write timestamp and decoded value to file
+
+// to create file:
+// ofstream FileName('filename.txt");
+// to write to file:
+// FileName << "Hello World!";
+// Don't forget to close the file... FileName.close()
+
+// To read from a file:
+// ifstream ReadFile("filename.txt")
+// *must also close
+// note that getline() returns 0 at eof so can use in while loop to iterate
+
+// notes for decoding data
+// big endianness so no need to swap
+// 57 72 75 65 03 5D A4 40
+//   FR    FL    RR    RL
+// we can bit mask to isolate RR
+// perform bitwise AND with:
+// 00 00 00 00 FF FF 00 00
+// convert from hex to decimal 
+// multiply by scale 0.1
+
+// string handling functions:
+// sustr(pos, len)
+// 
+//##########################################################################
