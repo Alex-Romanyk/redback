@@ -25,7 +25,7 @@ FetchContent_MakeAvailable(googletest)
 
 add_executable(
   Question-4-out
-  Cuestion-4/Question-4.cc
+  Question-4/Question-4.cc
 )
 
 target_link_libraries(
