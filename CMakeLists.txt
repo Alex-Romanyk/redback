@@ -15,3 +15,25 @@ endforeach()
 
 
 # Question 4: Extension Task. You need to integrate Google Tests here
+
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+)
+FetchContent_MakeAvailable(googletest)
+
+add_executable(
+  Question-4-out
+  Cuestion-4/Question-4.cc
+)
+
+target_link_libraries(
+  Question-4-out
+  GTest::gtest_main
+  # following above target_link_libraries() i think pthread is required?
+  pthread
+)
+
+include(GoogleTest)
+gtest_discover_tests(Question-4-out)
