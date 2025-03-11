@@ -30,7 +30,7 @@ struct person {
 
 void show_output(const int* pp)
 {
-    printf("%p : %p : %d", &pp, pp, *pp);
+    printf("%p : %p : %d", (void*)&pp, (void*)pp, *pp);
 }
 
 
