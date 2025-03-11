@@ -44,7 +44,7 @@ int fillWalletWithMoney()
     for (int i = 0; i < 5; ++i) {
         threads.push_back(std::thread(&Wallet::addMoney, &walletObject, 1000));
     }
-    for (int i = 0; i < threads.size(); i++)
+    for (int i = 0; (unsigned)i < threads.size(); i++)
     {
         threads.at(i).join();
     }
