@@ -21,6 +21,7 @@ FetchContent_Declare(
   googletest
   URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
 )
+
 FetchContent_MakeAvailable(googletest)
 
 add_executable(
@@ -30,8 +31,9 @@ add_executable(
 
 target_link_libraries(
   Question-4-out
+  GTest::gtest
+  GTest::gmock
   GTest::gtest_main
-  # following above target_link_libraries() i think pthread is required?
   pthread
 )
 
