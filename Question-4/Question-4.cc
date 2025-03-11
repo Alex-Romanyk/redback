@@ -50,15 +50,29 @@ public:
 
 };
 
+
+class MockObserver : public Observer {
+	public:
+	MOCK_METHOD(void, ReactToEvent, (Actor* actor), (override));
+
+};
+
+using ::testing::AtLeast;
+
 // This will not compile until you implement MockObserver.
 
 TEST(ActorTest, ObserversAreCalled) {
-	auto observer = std::make_shared<MockObserver>();
-	Actor actor = { observer };
+	// added another MockObserver into actor to test if all observers
+	// in actor react when an event occurs
+	auto observer1 = std::make_shared<MockObserver>();
+	auto observer2 = std::make_shared<MockObserver>();
+	Actor actor = { observer1, observer2 };
 
 	constexpr auto numCalls = 5;
 
-	EXPECT_CALL(*observer, ReactToEvent(&actor))
+	EXPECT_CALL(*observer1, ReactToEvent(&actor))
+		.Times(numCalls);
+	EXPECT_CALL(*observer2, ReactToEvent(&actor))
 		.Times(numCalls);
 
 	for (int i = 0; i < numCalls; i++) {
