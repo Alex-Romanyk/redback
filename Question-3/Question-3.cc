@@ -60,7 +60,8 @@ using namespace std;
 
 int main(void) {
     string data_line;
-    ofstream rr_wheel_speed("output.txt");
+    //not sure whether to write file in build or Question-3
+    ofstream rr_wheel_speed("../Question-3/output.txt");
     ifstream raw_data("../Question-3/candump.log");
     if (raw_data.is_open()) {
         while (getline(raw_data, data_line)) {
